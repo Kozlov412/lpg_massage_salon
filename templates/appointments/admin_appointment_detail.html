@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Заявка №{{ appointment.id }} | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'admin_appointment_list' %}">Управление заявками</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Заявка №{{ appointment.id }}</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="brand-font mb-0">Заявка №{{ appointment.id }}</h1>
+        <a href="{% url 'admin_appointment_list' %}" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-2"></i>Назад к списку
+        </a>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8 mb-4 mb-md-0">
+            <!-- Детали заявки -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Детали заявки</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Статус:</strong></div>
+                        <div class="col-md-8">
+                            <span class="badge 
+                                {% if appointment.status == 'pending' %}bg-warning
+                                {% elif appointment.status == 'confirmed' %}bg-success
+                                {% elif appointment.status == 'completed' %}bg-info
+                                {% elif appointment.status == 'canceled' %}bg-danger
+                                {% endif %} px-3 py-2">
+                                {{ appointment.get_status_display }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Услуга:</strong></div>
+                        <div class="col-md-8">{{ appointment.service.name }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Филиал:</strong></div>
+                        <div class="col-md-8">{{ appointment.location.name }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Дата и время:</strong></div>
+                        <div class="col-md-8">{{ appointment.date|date:"d.m.Y" }} в {{ appointment.time|time:"H:i" }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Стоимость:</strong></div>
+                        <div class="col-md-8">{{ appointment.service.price }} ₽</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Продолжительность:</strong></div>
+                        <div class="col-md-8">{{ appointment.service.duration|time:"G \ч i \м\и\н" }}</div>
+                    </div>
+                    {% if appointment.notes %}
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Примечания клиента:</strong></div>
+                        <div class="col-md-8">{{ appointment.notes }}</div>
+                    </div>
+                    {% endif %}
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Создана:</strong></div>
+                        <div class="col-md-8">{{ appointment.created|date:"d.m.Y H:i" }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Последнее обновление:</strong></div>
+                        <div class="col-md-8">{{ appointment.updated|date:"d.m.Y H:i" }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Информация о клиенте -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Информация о клиенте</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Имя:</strong></div>
+                        <div class="col-md-8">{{ appointment.client.get_full_name|default:appointment.client.username }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Email:</strong></div>
+                        <div class="col-md-8">{{ appointment.client.email }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Телефон:</strong></div>
+                        <div class="col-md-8">{{ appointment.client_phone }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Дата регистрации:</strong></div>
+                        <div class="col-md-8">{{ appointment.client.date_joined|date:"d.m.Y" }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Количество записей:</strong></div>
+                        <div class="col-md-8">{{ appointment.client.appointments.count }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Отзыв клиента (если есть) -->
+            {% if review %}
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Отзыв клиента</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Рейтинг:</strong></div>
+                        <div class="col-md-8">
+                            <div class="rating-stars">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <i class="bi bi-star-fill" style="color: #FFD700;"></i>
+                                    {% else %}
+                                        <i class="bi bi-star" style="color: #ddd;"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Комментарий:</strong></div>
+                        <div class="col-md-8">{{ review.comment }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Статус:</strong></div>
+                        <div class="col-md-8">
+                            {% if review.is_published %}
+                            <span class="badge bg-success">Опубликован</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Скрыт</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><strong>Дата отзыва:</strong></div>
+                        <div class="col-md-8">{{ review.created|date:"d.m.Y H:i" }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-4">
+            <!-- Обновление статуса заявки -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Обновление статуса</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'admin_appointment_update' appointment.id %}">
+                        {% csrf_token %}
+                        {{ status_form|crispy }}
+                        <button type="submit" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-save me-2"></i>Сохранить изменения
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Быстрые действия -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Быстрые действия</h3>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        {% if appointment.status == 'pending' %}
+                        <form method="post" action="{% url 'admin_appointment_update' appointment.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="status" value="confirmed">
+                            <button type="submit" class="btn btn-success w-100 mb-2">
+                                <i class="bi bi-check-circle me-2"></i>Подтвердить заявку
+                            </button>
+                        </form>
+                        {% endif %}
+                        
+                        {% if appointment.status == 'confirmed' %}
+                        <form method="post" action="{% url 'admin_appointment_update' appointment.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="status" value="completed">
+                            <button type="submit" class="btn btn-info w-100 mb-2 text-white">
+                                <i class="bi bi-check2-all me-2"></i>Отметить как завершенную
+                            </button>
+                        </form>
+                        {% endif %}
+                        
+                        {% if appointment.status == 'pending' or appointment.status == 'confirmed' %}
+                        <form method="post" action="{% url 'admin_appointment_update' appointment.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="status" value="canceled">
+                            <button type="submit" class="btn btn-danger w-100 mb-2">
+                                <i class="bi bi-x-circle me-2"></i>Отменить заявку
+                            </button>
+                        </form>
+                        {% endif %}
+                        
+                        {% if not appointment.notified %}
+                        <form method="post" action="{% url 'admin_appointment_update' appointment.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="notified" value="true">
+                            <button type="submit" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-bell me-2"></i>Отметить как уведомленного
+                            </button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .status-pending {
+        background-color: #FFC107;
+        color: white;
+    }
+    .status-confirmed {
+        background-color: #28A745;
+        color: white;
+    }
+    .status-completed {
+        background-color: #17A2B8;
+        color: white;
+    }
+    .status-canceled {
+        background-color: #DC3545;
+        color: white;
+    }
+    
+    .rating-stars {
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

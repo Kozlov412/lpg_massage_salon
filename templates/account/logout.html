@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Выход | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="h4 brand-font mb-0">{% trans "Выход из системы" %}</h2>
+        </div>
+        <div class="card-body p-4 text-center">
+          <p>{% trans 'Вы уверены, что хотите выйти?' %}</p>
+
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button class="btn btn-danger" type="submit">{% trans 'Выйти' %}</button>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">{% trans 'Отмена' %}</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

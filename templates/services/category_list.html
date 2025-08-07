@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Услуги | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Услуги</li>
+        </ol>
+    </nav>
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 brand-font">Наши услуги</h1>
+        <p class="lead">Выберите категорию или сразу перейдите к интересующей вас процедуре</p>
+    </div>
+
+    <!-- Категории услуг -->
+    <div class="row mb-5">
+        {% for category in categories %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'service_list' category.id %}" class="text-decoration-none">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center py-5">
+                        <div class="icon-wrapper mb-4 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                            <i class="bi {{ category.icon|default:'bi-spa' }} text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="card-title brand-font">{{ category.name }}</h3>
+                        <p class="card-text text-muted">{{ category.description|truncatewords:10 }}</p>
+                        <div class="mt-4">
+                            <span class="btn btn-outline-primary">Смотреть услуги <i class="bi bi-arrow-right ms-2"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Все услуги -->
+    <h2 class="h3 mb-4 text-center brand-font">Все процедуры</h2>
+    <div class="row">
+        {% for service in all_services %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="card-title mb-0">{{ service.name }}</h5>
+                        <span class="badge bg-primary rounded-pill">{{ service.price }} ₽</span>
+                    </div>
+                    <p class="card-text small text-muted mb-3">
+                        <i class="bi bi-tag me-1"></i>{{ service.category.name }} | 
+                        <i class="bi bi-clock me-1"></i>{{ service.duration|time:"G \ч i \м\и\н" }}
+                    </p>
+                    <p class="card-text">{{ service.description|truncatewords:15 }}</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'service_detail' service.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                        <a href="{% url 'appointment_create' %}?service_id={{ service.id }}" class="btn btn-sm btn-primary">
+                            <i class="bi bi-calendar-plus me-1"></i>Записаться
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

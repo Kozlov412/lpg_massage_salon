@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Контакты | ЮАнна студия массажа{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Контакты</li>
+        </ol>
+    </nav>
+
+    <h1 class="text-center brand-font mb-5">Контакты студии массажа ЮАнна</h1>
+    
+    <div class="row mb-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3">
+                    <h2 class="h4 brand-font mb-0">Связаться с нами</h2>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3"><i class="bi bi-envelope-fill text-primary me-2"></i> <strong>Email:</strong> <a href="mailto:info@yuanna.ru">info@yuanna.ru</a></p>
+                    <p class="mb-3"><i class="bi bi-telephone-fill text-primary me-2"></i> <strong>Телефон:</strong> <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+                    
+                    <h5 class="mt-4">Мы в социальных сетях</h5>
+                    <div class="mt-3 d-flex">
+                        <a href="#" class="me-3 fs-4 text-primary"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3 fs-4 text-primary"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3 fs-4 text-primary"><i class="bi bi-vk"></i></a>
+                        <a href="#" class="fs-4 text-primary"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3">
+                    <h2 class="h4 brand-font mb-0">Напишите нам</h2>
+                </div>
+                <div class="card-body">
+                    <form id="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Тема</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send me-2"></i>Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-header bg-white py-3">
+            <h2 class="h4 brand-font mb-0">Все филиалы на карте</h2>
+        </div>
+        <div class="card-body p-0">
+            <div id="all-locations-map" style="height: 450px;"></div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h3 brand-font mb-4">Наши филиалы</h2>
+        </div>
+        
+        {% for location in locations %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3">
+                    <h3 class="h5 brand-font mb-0">{{ location.name }}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> <strong>Адрес:</strong> {{ location.address }}</p>
+                    <p class="mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> <strong>Телефон:</strong> <a href="tel:{{ location.phone }}">{{ location.phone }}</a></p>
+                    <p class="mb-2"><i class="bi bi-envelope-fill text-primary me-2"></i> <strong>Email:</strong> <a href="mailto:{{ location.email }}">{{ location.email }}</a></p>
+                    <p class="mb-2"><i class="bi bi-clock-fill text-primary me-2"></i> <strong>Режим работы:</strong> {{ location.working_hours }}</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'location_detail' location.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                        <a href="{% url 'appointment_create' %}?location_id={{ location.id }}" class="btn btn-sm btn-primary">
+                            <i class="bi bi-calendar-plus me-1"></i>Записаться
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Координаты всех филиалов
+        var locations = [
+            {% for location in locations %}
+            {
+                name: "{{ location.name }}",
+                address: "{{ location.address }}",
+                lat: {{ location.latitude|default:"53.2007" }},
+                lng: {{ location.longitude|default:"45.0046" }},
+                id: {{ location.id }}
+            }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        
+        // Инициализация карты
+        var map = L.map('all-locations-map');
+        
+        // Добавление слоя OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Массив для хранения маркеров
+        var markers = [];
+        
+        // Добавление маркеров для каждого филиала
+        locations.forEach(function(loc) {
+            var marker = L.marker([loc.lat, loc.lng])
+                .addTo(map)
+                .bindPopup("<b>" + loc.name + "</b><br>" + loc.address + "<br><a href='/locations/" + loc.id + "/' class='text-primary'>Подробнее</a>");
+            
+            markers.push(marker);
+        });
+        
+        // Настраиваем масштаб и центр карты, чтобы видеть все маркеры
+        if (markers.length > 0) {
+            var group = new L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.1));
+        } else {
+            // Если маркеров нет, показываем центр Пензы
+            map.setView([53.2007, 45.0046], 12);
+        }
+        
+        // Обработка формы обратной связи
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+    });
+</script>
+{% endblock %}

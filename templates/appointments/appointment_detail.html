@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Запись №{{ appointment.id }} | LPG Массаж{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'appointment_list' %}">Мои записи</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Запись №{{ appointment.id }}</li>
+        </ol>
+    </nav>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h2 class="h4 mb-0">Информация о записи</h2>
+            <span class="badge {% if appointment.status == 'pending' %}bg-warning text-dark
+                  {% elif appointment.status == 'confirmed' %}bg-success
+                  {% elif appointment.status == 'completed' %}bg-info
+                  {% elif appointment.status == 'canceled' %}bg-danger{% endif %}">
+                {% if appointment.status == 'pending' %}Ожидает подтверждения
+                {% elif appointment.status == 'confirmed' %}Подтверждена
+                {% elif appointment.status == 'completed' %}Завершена
+                {% elif appointment.status == 'canceled' %}Отменена{% endif %}
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Детали записи</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Услуга:</dt>
+                        <dd class="col-sm-8">{{ appointment.service.name }}</dd>
+                        
+                        <dt class="col-sm-4">Дата:</dt>
+                        <dd class="col-sm-8">{{ appointment.date|date:"d.m.Y" }}</dd>
+                        
+                        <dt class="col-sm-4">Время:</dt>
+                        <dd class="col-sm-8">{{ appointment.time|time:"H:i" }}</dd>
+                        
+                        <dt class="col-sm-4">Создана:</dt>
+                        <dd class="col-sm-8">{{ appointment.created|date:"d.m.Y H:i" }}</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <h5>Информация о филиале</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Филиал:</dt>
+                        <dd class="col-sm-8">{{ appointment.location.name }}</dd>
+                        
+                        <dt class="col-sm-4">Адрес:</dt>
+                        <dd class="col-sm-8">{{ appointment.location.address }}</dd>
+                        
+                        <dt class="col-sm-4">Телефон:</dt>
+                        <dd class="col-sm-8">{{ appointment.location.phone }}</dd>
+                        
+                        <dt class="col-sm-4">Часы работы:</dt>
+                        <dd class="col-sm-8">{{ appointment.location.working_hours }}</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            {% if appointment.notes %}
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h5>Примечания</h5>
+                    <p>{{ appointment.notes }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="card-footer">
+            <a href="{% url 'appointment_list' %}" class="btn btn-secondary">Назад к списку</a>
+            
+        {% if appointment.status == 'completed' and not has_review %}
+<div class="mt-4">
+    <a href="{% url 'review_create' appointment.id %}" class="btn btn-outline-primary">
+        <i class="bi bi-star me-2"></i>Оставить отзыв
+    </a>
+</div>
+    </div>
+    
+    {% if appointment.review %}
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h2 class="h4 mb-0">Ваш отзыв</h2>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <h5>Оценка: 
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= appointment.review.rating %}
+                            <i class="fas fa-star text-warning"></i>
+                        {% else %}
+                            <i class="far fa-star text-warning"></i>
+                        {% endif %}
+                    {% endfor %}
+                    ({{ appointment.review.rating }} из 5)
+                </h5>
+            </div>
+            <div>
+                <h5>Комментарий:</h5>
+                <p>{{ appointment.review.comment }}</p>
+            </div>
+            <small class="text-muted">Отзыв оставлен: {{ appointment.review.created|date:"d.m.Y H:i" }}</small>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

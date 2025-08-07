@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ service.name }} | ЮАнна студия массажа{% endblock %}
+
+{% block extra_css %}
+<style>
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    
+    .star-rating input {
+        display: none;
+    }
+    
+    .star-rating label {
+        font-size: 2rem;
+        padding: 0 0.2rem;
+        cursor: pointer;
+        color: #ccc;
+    }
+    
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+        color: #FFD700;
+    }
+    
+    .review-card {
+        border-left: 3px solid #a67b5b;
+        background-color: #f9f9f9;
+    }
+    
+    .rating-stars {
+        color: #FFD700;
+    }
+    
+    .rating-stars-empty {
+        color: #ddd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'service_categories' %}">Услуги</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'service_list' service.category.id %}">{{ service.category.name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ service.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if service.image %}
+                <img src="{{ service.image.url }}" class="img-fluid rounded-start h-100" alt="{{ service.name }}" style="object-fit: cover;">
+                {% else %}
+                <div class="d-flex align-items-center justify-content-center h-100 bg-light" style="min-height: 300px;">
+                    <i class="bi bi-spa text-primary" style="font-size: 6rem;"></i>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h1 class="card-title brand-font">{{ service.name }}</h1>
+                        <span class="badge bg-primary fs-5 rounded-pill">{{ service.price }} ₽</span>
+                    </div>
+                    
+                    {% if avg_rating %}
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="rating-stars me-2">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= avg_rating|floatformat:"0" %}
+                                        <i class="bi bi-star-fill"></i>
+                                    {% else %}
+                                        <i class="bi bi-star rating-stars-empty"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <span class="text-muted">{{ avg_rating|floatformat:"1" }} из 5 ({{ review_count }} отзыв{{ review_count|pluralize:"ов" }})</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <p class="card-text small text-muted mb-3">
+                        <span class="me-3"><i class="bi bi-tag me-1"></i>{{ service.category.name }}</span>
+                        <span><i class="bi bi-clock me-1"></i>{{ service.duration|time:"G \ч i \м\и\н" }}</span>
+                    </p>
+                    <p class="card-text fs-5">{{ service.description }}</p>
+                    <a href="{% url 'appointment_create' %}?service_id={{ service.id }}" class="btn btn-primary btn-lg mt-3">
+                        <i class="bi bi-calendar-plus me-2"></i>Записаться на процедуру
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title brand-font">Как проходит процедура</h3>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-1-circle-fill text-primary me-2"></i>
+                            Консультация и определение проблемных зон
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-2-circle-fill text-primary me-2"></i>
+                            Подготовка к процедуре
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-3-circle-fill text-primary me-2"></i>
+                            Проведение процедуры {{ service.name }}
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-4-circle-fill text-primary me-2"></i>
+                            Завершение процедуры и рекомендации
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title brand-font">Преимущества</h3>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Быстрый видимый результат
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Безопасность и комфорт во время процедуры
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Профессиональное оборудование и опытные мастера
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Комплексный подход к решению проблем
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Отзывы клиентов -->
+    <div class="mt-5">
+    <h3 class="brand-font mb-4">Отзывы клиентов</h3>
+    
+    {% if reviews %}
+    <div class="mb-4">
+        {% for review in reviews %}
+        <div class="card review-card mb-3 border-0">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="mb-0">{{ review.user.get_full_name|default:review.user.username }}</h5>
+                    <div class="rating-stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                <i class="bi bi-star-fill"></i>
+                            {% else %}
+                                <i class="bi bi-star rating-stars-empty"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <p class="text-muted small mb-2">
+                    <i class="bi bi-geo-alt me-1"></i>{{ review.location.name }} | 
+                    <i class="bi bi-calendar3 me-1"></i>{{ review.created|date:"d.m.Y" }}
+                </p>
+                <p class="mb-0">{{ review.comment }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+        {% if review_count > 5 %}
+        <div class="text-center mt-3">
+            <button class="btn btn-outline-primary" id="load-more-reviews">
+                Показать больше отзывов <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body text-center py-4">
+            <i class="bi bi-chat-square-text text-muted" style="font-size: 3rem;"></i>
+            <p class="mt-3 mb-0">Отзывов пока нет. Будьте первым, кто оставит отзыв об этой услуге!</p>
+        </div>
+    </div>
+    {% endif %}
+        
+        <!-- Форма для отправки отзыва -->
+        {% if user.is_authenticated %}
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+                <h4 class="mb-0 brand-font">Оставить отзыв</h4>
+            </div>
+            <div class="card-body p-4">
+                {% if user_reviewed %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle-fill me-2"></i>Вы уже оставили отзыв на эту услугу. Спасибо за ваше мнение!
+                </div>
+                {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Ваша оценка</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5" required />
+                            <label for="star5" title="5 звезд">★</label>
+                            <input type="radio" id="star4" name="rating" value="4" />
+                            <label for="star4" title="4 звезды">★</label>
+                            <input type="radio" id="star3" name="rating" value="3" />
+                            <label for="star3" title="3 звезды">★</label>
+                            <input type="radio" id="star2" name="rating" value="2" />
+                            <label for="star2" title="2 звезды">★</label>
+                            <input type="radio" id="star1" name="rating" value="1" />
+                            <label for="star1" title="1 звезда">★</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_location" class="form-label">Филиал</label>
+                        <select name="location" id="id_location" class="form-select" required>
+                            <option value="">Выберите филиал</option>
+                            {% for location in locations %}
+                            <option value="{{ location.id }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_comment" class="form-label">Ваш отзыв</label>
+                        <textarea name="comment" id="id_comment" rows="4" class="form-control" placeholder="Поделитесь своим мнением об услуге" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-send me-2"></i>Отправить отзыв
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 text-center">
+                <p>Для отправки отзыва необходимо <a href="{% url 'account_login' %}">войти</a> или <a href="{% url 'account_signup' %}">зарегистрироваться</a>.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Другие услуги -->
+    <div class="text-center mt-5">
+        <h3 class="brand-font mb-4">Другие услуги</h3>
+        <div class="row">
+            {% for related_service in related_services %}
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ related_service.name }}</h5>
+                        <p class="card-text small">
+                            <span class="badge bg-primary rounded-pill">{{ related_service.price }} ₽</span>
+                            <span class="text-muted ms-2">{{ related_service.duration|time:"G \ч i \м\и\н" }}</span>
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'service_detail' related_service.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            <a href="{% url 'appointment_create' %}?service_id={{ related_service.id }}" class="btn btn-sm btn-primary">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Анимация для отзывов при прокрутке
+        const reviewCards = document.querySelectorAll('.review-card');
+        
+        function checkVisibility() {
+            reviewCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.8) && (rect.bottom >= 0);
+                
+                if (isVisible) {
+                    card.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }
+        
+        // Проверяем видимость при загрузке и прокрутке
+        checkVisibility();
+        window.addEventListener('scroll', checkVisibility);
+        
+        // AJAX загрузка дополнительных отзывов
+        const loadMoreButton = document.getElementById('load-more-reviews');
+        if (loadMoreButton) {
+            loadMoreButton.addEventListener('click', function() {
+                // В реальном проекте здесь должен быть AJAX запрос
+                alert('В реальном проекте здесь будет подгрузка дополнительных отзывов через AJAX');
+            });
+        }
+    });
+</script>
+{% endblock %}

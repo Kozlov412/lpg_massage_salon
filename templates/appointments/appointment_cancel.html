@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Отмена записи | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'appointment_list' %}">Мои записи</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Отмена записи</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-danger text-white py-3">
+                    <h2 class="h4 mb-0">Подтверждение отмены</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <strong>Внимание!</strong> Вы уверены, что хотите отменить запись?
+                    </div>
+                    
+                    <div class="my-4">
+                        <h4 class="h5">Информация о записи:</h4>
+                        <dl class="row">
+                            <dt class="col-sm-4">Услуга:</dt>
+                            <dd class="col-sm-8">{{ appointment.service.name }}</dd>
+                            
+                            <dt class="col-sm-4">Филиал:</dt>
+                            <dd class="col-sm-8">{{ appointment.location.name }}</dd>
+                            
+                            <dt class="col-sm-4">Дата и время:</dt>
+                            <dd class="col-sm-8">{{ appointment.date|date:"d.m.Y" }} в {{ appointment.time|time:"H:i" }}</dd>
+                            
+                            <dt class="col-sm-4">Цена:</dt>
+                            <dd class="col-sm-8">{{ appointment.service.price }} ₽</dd>
+                            
+                            <dt class="col-sm-4">Статус:</dt>
+                            <dd class="col-sm-8">
+                                {% if appointment.status == 'pending' %}
+                                <span class="badge bg-warning">Ожидает подтверждения</span>
+                                {% elif appointment.status == 'confirmed' %}
+                                <span class="badge bg-success">Подтверждена</span>
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                    <p>После отмены записи вы сможете при необходимости создать новую заявку.</p>
+                    
+                    <form method="post" class="mt-4">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'appointment_detail' appointment.id %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-2"></i>Отмена
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-2"></i>Подтвердить отмену
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

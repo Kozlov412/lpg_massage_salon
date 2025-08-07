@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Управление отзывом | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'admin_review_list' %}">Управление отзывами</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Отзыв №{{ review.id }}</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="brand-font mb-0">Отзыв №{{ review.id }}</h1>
+        <a href="{% url 'admin_review_list' %}" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-2"></i>Назад к списку
+        </a>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8 mb-4 mb-md-0">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Отзыв</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Услуга:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.service.name }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Филиал:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.location.name }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Дата заявки:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.date|date:"d.m.Y" }} в {{ review.appointment.time|time:"H:i" }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Рейтинг:</strong></div>
+                        <div class="col-md-8">
+                            <div class="rating-stars">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <i class="bi bi-star-fill" style="color: #FFD700;"></i>
+                                    {% else %}
+                                        <i class="bi bi-star" style="color: #ddd;"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Комментарий:</strong></div>
+                        <div class="col-md-8">{{ review.comment }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Статус:</strong></div>
+                        <div class="col-md-8">
+                            {% if review.is_published %}
+                            <span class="badge bg-success">Опубликован</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Скрыт</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Дата создания:</strong></div>
+                        <div class="col-md-8">{{ review.created|date:"d.m.Y H:i" }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><strong>Последнее обновление:</strong></div>
+                        <div class="col-md-8">{{ review.updated|date:"d.m.Y H:i" }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Информация о клиенте</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Имя:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.client.get_full_name|default:review.appointment.client.username }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Email:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.client.email }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4"><strong>Телефон:</strong></div>
+                        <div class="col-md-8">{{ review.appointment.client_phone }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Управление отзывом</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="id_is_published" name="is_published" {% if review.is_published %}checked{% endif %}>
+                            <label class="form-check-label" for="id_is_published">Опубликовать отзыв</label>
+                            <div class="form-text">При снятии галочки отзыв будет скрыт от посетителей сайта.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-save me-2"></i>Сохранить изменения
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h3 class="h5 mb-0">Быстрые действия</h3>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'admin_appointment_detail' review.appointment.id %}" class="btn btn-outline-primary">
+                            <i class="bi bi-calendar-check me-2"></i>Просмотреть заявку
+                        </a>
+                        {% if not review.is_published %}
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="is_published" value="true">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-eye me-2"></i>Опубликовать отзыв
+                            </button>
+                        </form>
+                        {% else %}
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="is_published" value="false">
+                            <button type="submit" class="btn btn-secondary w-100">
+                                <i class="bi bi-eye-slash me-2"></i>Скрыть отзыв
+                            </button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .rating-stars {
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

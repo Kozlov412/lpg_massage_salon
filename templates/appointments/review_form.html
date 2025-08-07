@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Оставить отзыв | ЮАнна студия массажа{% endblock %}
+
+{% block extra_css %}
+<style>
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    
+    .star-rating input {
+        display: none;
+    }
+    
+    .star-rating label {
+        font-size: 2rem;
+        padding: 0 0.2rem;
+        cursor: pointer;
+        color: #ccc;
+    }
+    
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+        color: #FFD700;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'appointment_list' %}">Мои записи</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'appointment_detail' appointment.id %}">Запись №{{ appointment.id }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Оставить отзыв</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="h4 mb-0">Оставить отзыв</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <h5 class="mb-3">Информация о процедуре</h5>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Услуга:</dt>
+                            <dd class="col-sm-8">{{ appointment.service.name }}</dd>
+                            
+                            <dt class="col-sm-4">Филиал:</dt>
+                            <dd class="col-sm-8">{{ appointment.location.name }}</dd>
+                            
+                            <dt class="col-sm-4">Дата и время:</dt>
+                            <dd class="col-sm-8">{{ appointment.date|date:"d.m.Y" }} в {{ appointment.time|time:"H:i" }}</dd>
+                        </dl>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Поле рейтинга со звездочками -->
+                        <div class="mb-3">
+                            <label for="id_rating" class="form-label">Ваша оценка</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required />
+                                <label for="star5" title="5 звезд">★</label>
+                                <input type="radio" id="star4" name="rating" value="4" />
+                                <label for="star4" title="4 звезды">★</label>
+                                <input type="radio" id="star3" name="rating" value="3" />
+                                <label for="star3" title="3 звезды">★</label>
+                                <input type="radio" id="star2" name="rating" value="2" />
+                                <label for="star2" title="2 звезды">★</label>
+                                <input type="radio" id="star1" name="rating" value="1" />
+                                <label for="star1" title="1 звезда">★</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Поле комментария -->
+                        <div class="mb-3">
+                            <label for="id_comment" class="form-label">Ваш отзыв</label>
+                            <textarea name="comment" id="id_comment" rows="4" class="form-control" placeholder="Поделитесь своим мнением о процедуре" required></textarea>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            Ваш отзыв поможет нам стать лучше и будет полезен другим клиентам!
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'appointment_detail' appointment.id %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Вернуться
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send me-2"></i>Отправить отзыв
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

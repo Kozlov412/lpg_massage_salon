@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero секция -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold">Студия массажа ЮАнна</h1>
+                <p class="lead">Профессиональный массаж и аппаратные методики для красоты и здоровья вашего тела</p>
+                <div class="mt-4 d-flex gap-2">
+                    <a href="{% url 'appointment_create' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-calendar-check me-2"></i>Записаться
+                    </a>
+                    <a href="{% url 'service_categories' %}" class="btn btn-outline-dark btn-lg">
+                        <i class="bi bi-list-ul me-2"></i>Услуги
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/лого.png' %}" alt="ЮАнна студия массажа" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Категории услуг -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 brand-font">Наши услуги</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'service_list' 1 %}" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body text-center py-5">
+                            <div class="icon-wrapper mb-4 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="bi bi-magic text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h3 class="card-title brand-font">Аппаратный массаж</h3>
+                            <p class="card-text text-muted">Современные технологии для коррекции фигуры</p>
+                            <div class="mt-4">
+                                <span class="btn btn-outline-primary">Подробнее <i class="bi bi-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'service_list' 2 %}" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body text-center py-5">
+                            <div class="icon-wrapper mb-4 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="bi bi-hand-index-thumb text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h3 class="card-title brand-font">Ручной массаж</h3>
+                            <p class="card-text text-muted">Классические и современные техники массажа</p>
+                            <div class="mt-4">
+                                <span class="btn btn-outline-primary">Подробнее <i class="bi bi-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'service_list' 3 %}" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body text-center py-5">
+                            <div class="icon-wrapper mb-4 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="bi bi-emoji-smile text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h3 class="card-title brand-font">Массаж лица</h3>
+                            <p class="card-text text-muted">Специализированные техники для омоложения лица</p>
+                            <div class="mt-4">
+                                <span class="btn btn-outline-primary">Подробнее <i class="bi bi-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'service_categories' %}" class="btn btn-primary">
+                <i class="bi bi-grid me-2"></i>Все услуги
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 brand-font">Почему выбирают студию ЮАнна</h2>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="icon-wrapper mb-3 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-award text-white fs-2"></i>
+                        </div>
+                        <h5 class="card-title">Современное оборудование</h5>
+                        <p class="card-text">Мы используем только сертифицированное оборудование последнего поколения для всех видов процедур</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="icon-wrapper mb-3 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-person-check text-white fs-2"></i>
+                        </div>
+                        <h5 class="card-title">Квалифицированные специалисты</h5>
+                        <p class="card-text">Наши мастера имеют профессиональную подготовку и большой опыт работы</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="icon-wrapper mb-3 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-geo-alt text-white fs-2"></i>
+                        </div>
+                        <h5 class="card-title">Три филиала в городе</h5>
+                        <p class="card-text">Выберите ближайший к вам салон из трех удобно расположенных филиалов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Популярные услуги -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 brand-font">Популярные услуги</h2>
+        <div class="row">
+            {% for service in services|slice:":6" %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    {% if service.image %}
+                    <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-light text-center py-5">
+                        <i class="bi bi-spa text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">{{ service.name }}</h5>
+                            <span class="badge bg-primary rounded-pill">{{ service.price }} ₽</span>
+                        </div>
+                        <p class="card-text small text-muted">{{ service.description|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'service_detail' service.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            <a href="{% url 'appointment_create' %}?service_id={{ service.id }}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-calendar-plus me-1"></i>Записаться
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center">Услуги будут добавлены в ближайшее время</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'service_categories' %}" class="btn btn-outline-primary">
+                <i class="bi bi-grid me-2"></i>Все услуги
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Филиалы -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 brand-font">Наши филиалы</h2>
+        <div class="row">
+            {% for location in locations %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    {% if location.image %}
+                    <img src="{{ location.image.url }}" class="card-img-top" alt="{{ location.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-light text-center py-5">
+                        <i class="bi bi-building text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ location.name }}</h5>
+                        <p><i class="bi bi-geo-alt-fill text-primary me-2"></i>{{ location.address }}</p>
+                        <p><i class="bi bi-telephone-fill text-primary me-2"></i>{{ location.phone }}</p>
+                        <p><i class="bi bi-clock-fill text-primary me-2"></i>{{ location.working_hours }}</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'location_detail' location.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            <a href="{% url 'appointment_create' %}?location_id={{ location.id }}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-calendar-plus me-1"></i>Записаться
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center">Информация о филиалах будет добавлена в ближайшее время</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Призыв к действию -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4 brand-font">Запишитесь на сеанс массажа прямо сейчас!</h2>
+        <p class="lead mb-4">Сделайте первый шаг к красивой фигуре и здоровому телу</p>
+        <a href="{% url 'appointment_create' %}" class="btn btn-light btn-lg">
+            <i class="bi bi-calendar-check me-2"></i>Записаться на процедуру
+        </a>
+    </div>
+</section>
+{% endblock %}

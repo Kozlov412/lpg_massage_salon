@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Управление заявками | ЮАнна студия массажа{% endblock %}
+
+{% block extra_css %}
+<style>
+    .status-pending {
+        background-color: #FFC107;
+        color: white;
+    }
+    .status-confirmed {
+        background-color: #28A745;
+        color: white;
+    }
+    .status-completed {
+        background-color: #17A2B8;
+        color: white;
+    }
+    .status-canceled {
+        background-color: #DC3545;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Управление заявками</li>
+        </ol>
+    </nav>
+
+    <h1 class="brand-font mb-4">Управление заявками</h1>
+    
+    <!-- Фильтры -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-3">
+                    <label for="status" class="form-label">Статус</label>
+                    <select name="status" id="status" class="form-select">
+                        <option value="">Все статусы</option>
+                        {% for status_code, status_name in status_choices %}
+                        <option value="{{ status_code }}" {% if current_status == status_code %}selected{% endif %}>{{ status_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="location" class="form-label">Филиал</label>
+                    <select name="location" id="location" class="form-select">
+                        <option value="">Все филиалы</option>
+                        {% for location in locations %}
+                        <option value="{{ location.id }}" {% if current_location == location.id|stringformat:"s" %}selected{% endif %}>{{ location.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="date" class="form-label">Дата</label>
+                    <input type="date" name="date" id="date" class="form-control" value="{{ current_date }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="search" class="form-label">Поиск по клиенту</label>
+                    <input type="text" name="search" id="search" class="form-control" placeholder="Имя, email" value="{{ current_search }}">
+                </div>
+                <div class="col-12 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-filter me-2"></i>Применить фильтры
+                    </button>
+                    <a href="{% url 'admin_appointment_list' %}" class="btn btn-outline-secondary">
+                        <i class="bi bi-x-circle me-2"></i>Сбросить фильтры
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Список заявок -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Клиент</th>
+                            <th>Услуга</th>
+                            <th>Филиал</th>
+                            <th>Дата и время</th>
+                            <th>Статус</th>
+                            <th>Создана</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.id }}</td>
+                            <td>{{ appointment.client.get_full_name|default:appointment.client.username }}</td>
+                            <td>{{ appointment.service.name }}</td>
+                            <td>{{ appointment.location.name }}</td>
+                            <td>{{ appointment.date|date:"d.m.Y" }} в {{ appointment.time|time:"H:i" }}</td>
+                            <td>
+                                <span class="badge status-{{ appointment.status }} px-3 py-2">
+                                    {{ appointment.get_status_display }}
+                                </span>
+                            </td>
+                            <td>{{ appointment.created|date:"d.m.Y H:i" }}</td>
+                            <td>
+                                <a href="{% url 'admin_appointment_detail' appointment.id %}" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center py-4">
+                                <i class="bi bi-calendar-x text-muted" style="font-size: 2rem;"></i>
+                                <p class="mt-2 mb-0">Заявок, соответствующих выбранным фильтрам, не найдено.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Пагинация -->
+    {% if is_paginated %}
+    <div class="mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1{% if current_status %}&status={{ current_status }}{% endif %}{% if current_location %}&location={{ current_location }}{% endif %}{% if current_date %}&date={{ current_date }}{% endif %}{% if current_search %}&search={{ current_search }}{% endif %}" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_location %}&location={{ current_location }}{% endif %}{% if current_date %}&date={{ current_date }}{% endif %}{% if current_search %}&search={{ current_search }}{% endif %}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_location %}&location={{ current_location }}{% endif %}{% if current_date %}&date={{ current_date }}{% endif %}{% if current_search %}&search={{ current_search }}{% endif %}">{{ num }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_location %}&location={{ current_location }}{% endif %}{% if current_date %}&date={{ current_date }}{% endif %}{% if current_search %}&search={{ current_search }}{% endif %}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_location %}&location={{ current_location }}{% endif %}{% if current_date %}&date={{ current_date }}{% endif %}{% if current_search %}&search={{ current_search }}{% endif %}" aria-label="Last">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

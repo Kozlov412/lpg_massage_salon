@@ -1,0 +1,38 @@
+[
+  {
+    "model": "services.servicecategory",
+    "pk": 1,
+    "fields": {
+      "created": "2023-01-01T00:00:00Z",
+      "updated": "2023-01-01T00:00:00Z",
+      "name": "Аппаратный массаж",
+      "description": "Процедуры с использованием специализированных аппаратов для коррекции фигуры и улучшения состояния кожи",
+      "image": "",
+      "icon": "bi-magic"
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 2,
+    "fields": {
+      "created": "2023-01-01T00:00:00Z",
+      "updated": "2023-01-01T00:00:00Z",
+      "name": "Ручной массаж",
+      "description": "Эффективные массажные техники, выполняемые опытными специалистами",
+      "image": "",
+      "icon": "bi-hand-index-thumb"
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 3,
+    "fields": {
+      "created": "2023-01-01T00:00:00Z",
+      "updated": "2023-01-01T00:00:00Z",
+      "name": "Массаж лица",
+      "description": "Специализированные техники массажа для улучшения контуров лица, омоложения кожи и снятия напряжения",
+      "image": "",
+      "icon": "bi-emoji-smile"
+    }
+  }
+]

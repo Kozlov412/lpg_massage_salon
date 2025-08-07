@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }} | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'service_categories' %}">Услуги</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row align-items-center mb-4">
+        <div class="col-md-8">
+            <h1 class="brand-font mb-3">{{ category.name }}</h1>
+            <p class="lead">{{ category.description }}</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a href="{% url 'appointment_create' %}" class="btn btn-primary">
+                <i class="bi bi-calendar-plus me-2"></i>Записаться
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        {% if service.image %}
+                        <img src="{{ service.image.url }}" class="img-fluid rounded-start h-100" alt="{{ service.name }}" style="object-fit: cover;">
+                        {% else %}
+                        <div class="d-flex align-items-center justify-content-center h-100 bg-light">
+                            <i class="bi bi-spa text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body d-flex flex-column h-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">{{ service.name }}</h5>
+                                <span class="badge bg-primary rounded-pill">{{ service.price }} ₽</span>
+                            </div>
+                            <p class="card-text mb-1"><small class="text-muted">Длительность: {{ service.duration|time:"G \ч i \м\и\н" }}</small></p>
+                            <p class="card-text flex-grow-1">{{ service.description|truncatewords:30 }}</p>
+                            <div class="d-flex justify-content-between mt-2">
+                                <a href="{% url 'service_detail' service.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                                <a href="{% url 'appointment_create' %}?service_id={{ service.id }}" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i>Записаться
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <p class="mb-0">Пока в этой категории нет доступных услуг.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

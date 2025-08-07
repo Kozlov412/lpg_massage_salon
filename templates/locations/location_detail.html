@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ location.name }} | ЮАнна студия массажа{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'location_list' %}">Филиалы</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ location.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            {% if location.image %}
+            <img src="{{ location.image.url }}" alt="{{ location.name }}" class="img-fluid rounded mb-4 shadow">
+            {% else %}
+            <div class="bg-light rounded mb-4 d-flex align-items-center justify-content-center shadow" style="height: 300px;">
+                <i class="bi bi-building text-primary" style="font-size: 6rem;"></i>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h1 class="brand-font mb-4">{{ location.name }}</h1>
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <p class="mb-3"><i class="bi bi-geo-alt-fill text-primary me-2"></i> <strong>Адрес:</strong> {{ location.address }}</p>
+                    <p class="mb-3"><i class="bi bi-telephone-fill text-primary me-2"></i> <strong>Телефон:</strong> <a href="tel:{{ location.phone }}">{{ location.phone }}</a></p>
+                    <p class="mb-3"><i class="bi bi-envelope-fill text-primary me-2"></i> <strong>Email:</strong> <a href="mailto:{{ location.email }}">{{ location.email }}</a></p>
+                    <p class="mb-3"><i class="bi bi-clock-fill text-primary me-2"></i> <strong>Режим работы:</strong> {{ location.working_hours }}</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <a href="{% url 'appointment_create' %}?location_id={{ location.id }}" class="btn btn-primary">
+                    <i class="bi bi-calendar-plus me-2"></i>Записаться в этот филиал
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h2 class="h4 brand-font mb-0">О филиале</h2>
+                </div>
+                <div class="card-body">
+                    <p>{{ location.description|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h2 class="h4 brand-font mb-0">Как нас найти</h2>
+                </div>
+                <div class="card-body">
+                    <div id="location-map" style="height: 450px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Получаем координаты из переданных данных
+        var lat = {{ location.latitude|default:"53.2007" }};
+        var lng = {{ location.longitude|default:"45.0046" }};
+        var locationName = "{{ location.name }}";
+        var locationAddress = "{{ location.address }}";
+        
+        // Инициализация карты
+        var map = L.map('location-map').setView([lat, lng], 15);
+        
+        // Добавление слоя OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Добавление маркера
+        var marker = L.marker([lat, lng]).addTo(map);
+        
+        // Добавление всплывающей подсказки
+        marker.bindPopup("<b>" + locationName + "</b><br>" + locationAddress).openPopup();
+    });
+</script>
+{% endblock %}
