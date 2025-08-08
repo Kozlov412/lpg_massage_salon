@@ -1,0 +1,82 @@
+:root {
+  --primary-color: #a67b5b;
+  --primary-hover: #8c6549;
+  --secondary-color: #5c9ead;
+  --background-color: #ffffff;
+  --secondary-bg: #f8f3ef;
+  --tertiary-bg: #f3f3f3;
+  --text-color: #333333;
+  --text-muted: #666666;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.075);
+  --header-bg: #f8f3ef;
+  --footer-bg: #2d2a2a;
+  --footer-text: #f8f3ef;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --input-text: #333333;
+  --link-color: #a67b5b;
+  --link-hover-color: #8c6549;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  
+  // Специфичные цвета для карточек
+  --card-header-bg: #f8f8f8;
+  --card-header-text: #333333;
+  --card-border: #e0e0e0;
+  
+  // Цвета статусов записей
+  --status-pending-bg: #fff3cd;
+  --status-pending-text: #856404;
+  --status-confirmed-bg: #d4edda;
+  --status-confirmed-text: #155724;
+  --status-completed-bg: #d1ecf1;
+  --status-completed-text: #0c5460;
+  --status-canceled-bg: #f8d7da;
+  --status-canceled-text: #721c24;
+}
+
+// Переменные для темной темы
+[data-theme="dark"] {
+  --primary-color: #c09575;
+  --primary-hover: #d1a688;
+  --secondary-color: #6bb7c7;
+  --background-color: #121212;
+  --secondary-bg: #1e1e1e;
+  --tertiary-bg: #2a2a2a;
+  --text-color: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --header-bg: #1a1a1a;
+  --footer-bg: #121212;
+  --footer-text: #e0e0e0;
+  --input-bg: #2a2a2a;
+  --input-border: #444444;
+  --input-text: #e0e0e0;
+  --link-color: #c09575;
+  --link-hover-color: #d1a688;
+  --success-color: #5cb85c;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffca2c;
+  --info-color: #5bc0de;
+  
+  // Специфичные цвета для карточек
+  --card-header-bg: #2a2a2a;
+  --card-header-text: #e0e0e0;
+  --card-border: #333333;
+  
+  // Цвета статусов записей
+  --status-pending-bg: #413507;
+  --status-pending-text: #ffda75;
+  --status-confirmed-bg: #143a1e;
+  --status-confirmed-text: #81d48d;
+  --status-completed-bg: #0e3641;
+  --status-completed-text: #88d9e6;
+  --status-canceled-bg: #3b1217;
+  --status-canceled-text: #f1a4ac;
+}

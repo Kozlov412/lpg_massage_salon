@@ -57,7 +57,9 @@ class ServiceReview(TimeStampedModel):
         return f"Отзыв на {self.service.name} от {self.user.get_full_name() or self.user.username}"
     
     def get_stars_display(self):
-        """Возвращает звездный рейтинг для админ-панели"""
+    
+        if self.rating is None:
+            return format_html('<span class="text-muted">Нет оценки</span>')
+    
         stars = '★' * self.rating + '☆' * (5 - self.rating)
         return format_html('<span style="color: #FFD700;">{}</span>', stars)
-    get_stars_display.short_description = 'Рейтинг'

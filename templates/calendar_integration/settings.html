@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Настройки календаря | ЮАнна студия массажа{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'profile' %}">Личный кабинет</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Настройки календаря</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="h4 mb-0">Настройки интеграции с календарем</h2>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted mb-4">
+                        Настройте интеграцию с календарем, чтобы автоматически добавлять записи на процедуры в ваш личный календарь.
+                    </p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="calendar_type" class="form-label">Тип календаря</label>
+                            <select name="calendar_type" id="calendar_type" class="form-select">
+                                <option value="none" {% if settings.calendar_type == 'none' %}selected{% endif %}>Не использовать</option>
+                                <option value="google" {% if settings.calendar_type == 'google' %}selected{% endif %}>Google Calendar</option>
+                                <option value="ical" {% if settings.calendar_type == 'ical' %}selected{% endif %}>iCalendar (Apple, Outlook и др.)</option>
+                            </select>
+                        </div>
+                        
+                        <div id="google-settings" class="mb-4 {% if settings.calendar_type != 'google' %}d-none{% endif %}">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                Для интеграции с Google Calendar необходимо предоставить доступ к вашему календарю.
+                            </div>
+                            
+                            {% if has_google_auth %}
+                            <div class="alert alert-success">
+                                <i class="bi bi-check-circle-fill me-2"></i>
+                                Авторизация в Google Calendar выполнена успешно.
+                            </div>
+                            
+                            <form action="{% url 'remove_google_auth' %}" method="post" class="mt-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash me-1"></i>Удалить авторизацию
+                                </button>
+                            </form>
+                            {% else %}
+                            <a href="{% url 'google_auth_init' %}" class="btn btn-primary">
+                                <i class="bi bi-google me-2"></i>Авторизоваться в Google Calendar
+                            </a>
+                            {% endif %}
+                        </div>
+                        
+                        <div id="ical-settings" class="mb-4 {% if settings.calendar_type != 'ical' %}d-none{% endif %}">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                При выборе iCalendar вы сможете скачивать .ics файл для каждой записи и добавлять его в свой календарь вручную.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Настройки синхронизации</label>
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="add_appointments" name="add_appointments" {% if settings.add_appointments %}checked{% endif %}>
+                                <label class="form-check-label" for="add_appointments">Добавлять новые записи в календарь</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="update_appointments" name="update_appointments" {% if settings.update_appointments %}checked{% endif %}>
+                                <label class="form-check-label" for="update_appointments">Обновлять измененные записи в календаре</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="remove_canceled" name="remove_canceled" {% if settings.remove_canceled %}checked{% endif %}>
+                                <label class="form-check-label" for="remove_canceled">Удалять отмененные записи из календаря</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="reminder_time" class="form-label">Время напоминания (в минутах до начала)</label>
+                            <select name="reminder_time" id="reminder_time" class="form-select">
+                                <option value="15" {% if settings.reminder_time == 15 %}selected{% endif %}>15 минут</option>
+                                <option value="30" {% if settings.reminder_time == 30 %}selected{% endif %}>30 минут</option>
+                                <option value="60" {% if settings.reminder_time == 60 %}selected{% endif %}>1 час</option>
+                                <option value="120" {% if settings.reminder_time == 120 %}selected{% endif %}>2 часа</option>
+                                <option value="1440" {% if settings.reminder_time == 1440 %}selected{% endif %}>1 день</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'profile' %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Вернуться в личный кабинет
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-2"></i>Сохранить настройки
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarTypeSelect = document.getElementById('calendar_type');
+        const googleSettings = document.getElementById('google-settings');
+        const icalSettings = document.getElementById('ical-settings');
+        
+        // Функция для переключения блоков настроек
+        function toggleSettings() {
+            const selectedValue = calendarTypeSelect.value;
+            
+            if (selectedValue === 'google') {
+                googleSettings.classList.remove('d-none');
+                icalSettings.classList.add('d-none');
+            } else if (selectedValue === 'ical') {
+                googleSettings.classList.add('d-none');
+                icalSettings.classList.remove('d-none');
+            } else {
+                googleSettings.classList.add('d-none');
+                icalSettings.classList.add('d-none');
+            }
+        }
+        
+        // Слушатель события изменения типа календаря
+        calendarTypeSelect.addEventListener('change', toggleSettings);
+    });
+</script>
+{% endblock %}
+{% endblock %}

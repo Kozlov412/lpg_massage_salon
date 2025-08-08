@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "compressor",
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    
 
     # Сторонние приложения
     'crispy_forms',
@@ -57,7 +62,42 @@ INSTALLED_APPS = [
     'services',
     'locations',
     'appointments',
+    'api',
+    'calendar_integration',
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+# JWT настройки
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -161,6 +201,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_ENABLED = True
+
 # Медиа файлы
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -170,6 +213,18 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Настройки для django-allauth
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # Вход по имени пользователя или email
+ACCOUNT_EMAIL_REQUIRED = True  # Email обязателен при регистрации
+ACCOUNT_USERNAME_REQUIRED = True  # Имя пользователя обязательно
+ACCOUNT_EMAIL_VERIFICATION = "optional"  # Верификация email опциональна
+ACCOUNT_USERNAME_MIN_LENGTH = 3  # Минимальная длина имени пользователя
+
+# Дополнительные настройки для адаптации форм
+ACCOUNT_FORMS = {
+    'login': 'allauth.account.forms.LoginForm',
+    'signup': 'allauth.account.forms.SignupForm',
+    # Можно указать свои кастомные формы, если потребуется
+}
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = 'home'

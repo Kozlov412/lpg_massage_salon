@@ -27,6 +27,8 @@ urlpatterns = [
     path('services/', include('services.urls')),
     path('locations/', include('locations.urls')),
     path('appointments/', include('appointments.urls')),
+    path('api/v1/', include('api.urls')),
+    path('calendar/', include('calendar_integration.urls')),
 ]
 
 if settings.DEBUG:

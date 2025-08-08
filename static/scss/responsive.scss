@@ -1,0 +1,146 @@
+// Переменные для брейкпоинтов
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Миксины для медиа-запросов
+@mixin sm {
+  @media (max-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+// Общие стили для мобильных устройств
+body {
+  @include md {
+    font-size: 15px;
+  }
+  
+  @include sm {
+    font-size: 14px;
+  }
+}
+
+// Адаптация шапки и меню
+.navbar {
+  @include md {
+    padding: 0.5rem 1rem;
+    
+    .navbar-brand {
+      font-size: 1.4rem;
+      
+      img {
+        max-height: 40px;
+      }
+    }
+  }
+}
+
+// Адаптация контейнеров
+.container {
+  @include sm {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Адаптация заголовков
+h1, .h1 {
+  @include md {
+    font-size: 2rem;
+  }
+  
+  @include sm {
+    font-size: 1.8rem;
+  }
+}
+
+h2, .h2 {
+  @include md {
+    font-size: 1.75rem;
+  }
+  
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+// Адаптация карточек
+.card {
+  @include sm {
+    margin-bottom: 1rem;
+  }
+}
+
+// Улучшения для форм на мобильных устройствах
+form {
+  @include sm {
+    .form-control, .form-select {
+      font-size: 16px; // Предотвращает автоматическое масштабирование на iOS
+    }
+    
+    .btn {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Улучшения для навигации
+.breadcrumb {
+  @include sm {
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+}
+
+// Улучшения для списков и таблиц
+.table {
+  @include md {
+    font-size: 0.9rem;
+  }
+  
+  @include sm {
+    font-size: 0.8rem;
+  }
+}
+
+// Улучшения для отзывов
+.review-card {
+  @include sm {
+    padding: 0.75rem;
+    
+    .rating {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Fix для боковой панели
+.sidebar {
+  @include lg {
+    position: static;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}

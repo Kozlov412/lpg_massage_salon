@@ -39,7 +39,9 @@ class ServiceAdmin(admin.ModelAdmin):
             
         avg = sum(avg_rating) / len(avg_rating)
         stars = '★' * int(avg) + '☆' * (5 - int(avg))
-        return format_html('<span style="color: #FFD700;">{}</span> ({:.1f} из 5)', stars, avg)
+        
+        # Исправленная строка - используем правильный формат format_html
+        return format_html('<span style="color: #FFD700;">{}</span> ({} из 5)', stars, round(avg, 1))
     average_rating_display.short_description = "Средний рейтинг"
     
     def review_count(self, obj):
@@ -58,11 +60,13 @@ class ServiceReviewAdmin(admin.ModelAdmin):
     def publish_reviews(self, request, queryset):
         """Публикует выбранные отзывы"""
         updated = queryset.update(is_published=True)
-        self.message_user(request, f"{updated} отзывов опубликовано.")
+        # Исправляем и здесь формат сообщения
+        self.message_user(request, "{} отзывов опубликовано.".format(updated))
     publish_reviews.short_description = "Опубликовать выбранные отзывы"
     
     def unpublish_reviews(self, request, queryset):
         """Скрывает выбранные отзывы"""
         updated = queryset.update(is_published=False)
-        self.message_user(request, f"{updated} отзывов скрыто.")
+        # Исправляем и здесь формат сообщения
+        self.message_user(request, "{} отзывов скрыто.".format(updated))
     unpublish_reviews.short_description = "Скрыть выбранные отзывы"

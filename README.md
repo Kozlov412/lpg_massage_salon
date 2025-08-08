@@ -62,7 +62,7 @@ bash
 Copy code
 poetry run python manage.py runserver
 
-Структура проекта
+#Структура проекта
 - lpg_salon/ - основной пакет проекта Django
 - core/ - базовый функционал (модели, общие представления)
 - services/ - управление услугами и категориями

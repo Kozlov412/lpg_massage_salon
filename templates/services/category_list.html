@@ -23,16 +23,16 @@
         <div class="col-md-4 mb-4">
             <a href="{% url 'service_list' category.id %}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm hover-card">
-                    <div class="card-body text-center py-5">
+                    <div class="card-body text-center py-5 d-flex flex-column">
                         <div class="icon-wrapper mb-4 mx-auto bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                             <i class="bi {{ category.icon|default:'bi-spa' }} text-white" style="font-size: 2.5rem;"></i>
-                        </div>
-                        <h3 class="card-title brand-font">{{ category.name }}</h3>
-                        <p class="card-text text-muted">{{ category.description|truncatewords:10 }}</p>
-                        <div class="mt-4">
-                            <span class="btn btn-outline-primary">Смотреть услуги <i class="bi bi-arrow-right ms-2"></i></span>
-                        </div>
-                    </div>
+                                </div>
+                            <h3 class="card-title brand-font">{{ category.name }}</h3>
+                        <p class="card-text text-muted" style="min-height: 60px;">{{ category.description|truncatewords:10 }}</p>
+                    <div class="mt-auto pt-3">
+                <span class="btn btn-outline-primary">Смотреть услуги <i class="bi bi-arrow-right ms-2"></i></span>
+            </div>
+            </div>
                 </div>
             </a>
         </div>

@@ -1,0 +1,588 @@
+// Импортируем переменные и базовые файлы
+@import "variables";
+@import "animations";
+@import "responsive";
+
+// Общие стили для всего сайта
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Стили для основных элементов
+a {
+  color: var(--link-color);
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+// Стили для шапки сайта
+header.site-header {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  
+  .navbar {
+    background-color: var(--header-bg) !important;
+  }
+  
+  .nav-link {
+    color: var(--text-color);
+    
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+  
+  .dropdown-menu {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    
+    .dropdown-item {
+      color: var(--text-color);
+      
+      &:hover {
+        background-color: var(--tertiary-bg);
+        color: var(--link-color);
+      }
+    }
+    
+    .dropdown-divider {
+      border-color: var(--border-color);
+    }
+  }
+}
+
+// Стили для карточек
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+  }
+  
+  .card-header {
+    background-color: var(--card-header-bg);
+    border-bottom-color: var(--card-border);
+    color: var(--card-header-text);
+  }
+  
+  .card-footer {
+    background-color: var(--card-header-bg);
+    border-top-color: var(--card-border);
+  }
+  
+  .card-title {
+    color: var(--text-color);
+  }
+  
+  .card-text {
+    color: var(--text-color);
+  }
+  
+  &.bg-light {
+    background-color: var(--tertiary-bg) !important;
+  }
+}
+
+// Стили для кнопок
+.btn {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover, &:focus, &:active {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+  }
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover, &:focus, &:active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+  }
+}
+
+// Стили для алертов
+.alert {
+  border-color: var(--border-color);
+  
+  &.alert-success {
+    background-color: var(--status-confirmed-bg);
+    color: var(--status-confirmed-text);
+  }
+  
+  &.alert-danger {
+    background-color: var(--status-canceled-bg);
+    color: var(--status-canceled-text);
+  }
+  
+  &.alert-warning {
+    background-color: var(--status-pending-bg);
+    color: var(--status-pending-text);
+  }
+  
+  &.alert-info {
+    background-color: var(--status-completed-bg);
+    color: var(--status-completed-text);
+  }
+}
+
+// Стили для таблиц
+.table {
+  color: var(--text-color);
+  
+  thead {
+    background-color: var(--tertiary-bg);
+  }
+  
+  th, td {
+    border-color: var(--border-color);
+  }
+  
+  tbody tr:hover {
+    background-color: var(--tertiary-bg);
+  }
+}
+
+// Стили для форм
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--input-text);
+  
+  &:focus {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
+  }
+  
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+label {
+  color: var(--text-color);
+}
+
+// Стили для списков
+.list-group {
+  .list-group-item {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    
+    &:hover {
+      background-color: var(--tertiary-bg);
+    }
+    
+    &.active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+// Стили для статусов записей
+.badge {
+  &.bg-warning {
+    background-color: var(--status-pending-bg) !important;
+    color: var(--status-pending-text);
+  }
+  
+  &.bg-success {
+    background-color: var(--status-confirmed-bg) !important;
+    color: var(--status-confirmed-text);
+  }
+  
+  &.bg-info {
+    background-color: var(--status-completed-bg) !important;
+    color: var(--status-completed-text);
+  }
+  
+  &.bg-danger {
+    background-color: var(--status-canceled-bg) !important;
+    color: var(--status-canceled-text);
+  }
+}
+
+// Стили для подвала
+footer.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  
+  h5 {
+    color: var(--footer-text);
+  }
+  
+  a {
+    color: var(--footer-text);
+    
+    &:hover {
+      color: var(--link-hover-color);
+    }
+  }
+  
+  .border-top {
+    border-color: var(--border-color) !important;
+  }
+}
+
+// Модальные окна
+.modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  
+  .modal-header {
+    border-bottom-color: var(--border-color);
+  }
+  
+  .modal-footer {
+    border-top-color: var(--border-color);
+  }
+}
+
+// Хлебные крошки
+.breadcrumb {
+  background-color: transparent;
+  
+  .breadcrumb-item {
+    color: var(--text-muted);
+    
+    a {
+      color: var(--link-color);
+      
+      &:hover {
+        color: var(--link-hover-color);
+      }
+    }
+    
+    &.active {
+      color: var(--text-color);
+    }
+  }
+}
+
+// Вспомогательные классы цветов
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-bg) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-light {
+  color: var(--text-color) !important;
+}
+
+// Дополнительные стили
+.border {
+  border-color: var(--border-color) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem var(--shadow-color) !important;
+}
+
+.pagination {
+  .page-link {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    
+    &:hover {
+      background-color: var(--tertiary-bg);
+      color: var(--link-color);
+    }
+  }
+  
+  .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+
+// Исправление разделов "Популярные услуги" и "Наши услуги"
+.service-section {
+  background-color: var(--background-color) !important;
+  
+  .section-heading {
+    color: var(--text-color) !important;
+  }
+  
+  .section-subheading {
+    color: var(--text-muted) !important;
+  }
+}
+
+// Исправление карточек услуг
+.service-card {
+  .card-footer {
+    background-color: var(--card-bg) !important;
+    border-top-color: var(--border-color) !important;
+  }
+  
+  .card-title {
+    color: var(--text-color) !important;
+  }
+  
+  .card-text {
+    color: var(--text-muted) !important;
+  }
+  
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+  
+  .service-price {
+    color: var(--primary-color) !important;
+  }
+}
+
+// Исправление заголовков на всех страницах
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--text-color) !important;
+}
+
+// Исправление информации о филиалах
+.location-card {
+  .location-info {
+    color: var(--text-color) !important;
+  }
+  
+  .location-address, .location-phone, .location-email, .location-hours {
+    color: var(--text-muted) !important;
+  }
+  
+  .location-description {
+    color: var(--text-color) !important;
+  }
+}
+
+// Исправление страницы "О нас"
+.about-section {
+  .feature-icon {
+    color: var(--primary-color) !important;
+  }
+  
+  .feature-title {
+    color: var(--text-color) !important;
+  }
+  
+  .feature-text {
+    color: var(--text-muted) !important;
+  }
+}
+
+// Исправление цветовой кодировки заявок
+.appointment-status {
+  &.pending {
+    background-color: var(--status-pending-bg) !important;
+    color: var(--status-pending-text) !important;
+  }
+  
+  &.confirmed {
+    background-color: var(--status-confirmed-bg) !important;
+    color: var(--status-confirmed-text) !important;
+  }
+  
+  &.completed {
+    background-color: var(--status-completed-bg) !important;
+    color: var(--status-completed-text) !important;
+  }
+  
+  &.canceled {
+    background-color: var(--status-canceled-bg) !important;
+    color: var(--status-canceled-text) !important;
+  }
+}
+
+// Дополнительные улучшения для различных секций
+.bg-light {
+  background-color: var(--secondary-bg) !important;
+}
+
+.text-dark {
+  color: var(--text-color) !important;
+}
+
+// Фиксы для таблиц и данных в личном кабинете
+.table {
+  color: var(--text-color) !important;
+  
+  th {
+    color: var(--text-color) !important;
+    background-color: var(--card-header-bg) !important;
+  }
+  
+  td {
+    color: var(--text-color) !important;
+  }
+  
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+}
+
+// Исправляем блоки с белым фоном
+[class*="bg-white"] {
+  background-color: var(--card-bg) !important;
+}
+
+// Исправление цвета для описаний и второстепенного текста
+.description, .secondary-text {
+  color: var(--text-color) !important;
+}
+
+// Улучшение визуального разделения в темной теме
+[data-theme="dark"] {
+  .border, .border-top, .border-bottom, .border-start, .border-end {
+    border-color: var(--border-color) !important;
+  }
+  
+  // Добавляем тонкие тени для лучшего разделения элементов в темной теме
+  .card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+/* Улучшенное позиционирование иконки пароля */
+.form-group {
+  position: relative;
+}
+
+.password-toggle {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 3px); /* Регулировка вертикального положения */
+  z-index: 10;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Корректировка для полей с паролем */
+#id_password, #id_password1, #id_password2 {
+  padding-right: 40px; /* Освобождаем место для иконки */
+}
+
+/* Стиль при наведении */
+.password-toggle:hover {
+  color: var(--primary-color);
+}
+
+.category-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+  }
+  
+  .icon-wrapper {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-title {
+    margin-bottom: 1rem;
+  }
+  
+  .card-text {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    min-height: 60px; // Гарантирует минимальную высоту для выравнивания кнопок
+  }
+  
+  .btn-wrapper {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+// Стили для кнопки переключения пароля
+.input-group {
+  .btn-outline-secondary {
+    border-color: var(--input-border);
+    color: var(--text-muted);
+    background-color: var(--input-bg);
+    
+    &:hover, &:focus {
+      background-color: var(--tertiary-bg);
+      color: var(--text-color);
+      border-color: var(--primary-color);
+    }
+    
+    &:active {
+      background-color: var(--tertiary-bg) !important;
+      color: var(--primary-color) !important;
+    }
+  }
+}
+
+// Стили для темной темы
+[data-theme="dark"] {
+  .input-group {
+    .btn-outline-secondary {
+      border-color: var(--input-border);
+      color: var(--text-muted);
+      background-color: var(--input-bg);
+      
+      &:hover, &:focus {
+        background-color: var(--tertiary-bg);
+        color: var(--text-color);
+      }
+    }
+  }
+}
