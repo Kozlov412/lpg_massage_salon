@@ -1,0 +1,919 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-07-13T12:36:52.059Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "1",
+        "object_repr": "├єырщ√ь ╩рсєыютр - ╠шюёЄшьєы Ўш  (2025-07-25)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-07-13T14:27:45.019Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "6",
+        "object_repr": "╠рёёрц ёЇхЁрьш",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-07-13T14:29:54.111Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "4",
+        "object_repr": "RF ышЇЄшэу",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-07-13T14:30:10.710Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "3",
+        "object_repr": "┬ръєєьэ√щ ьрёёрц",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-07-13T14:30:31.308Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "2",
+        "object_repr": "╠шюёЄшьєы Ўш ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-07-13T14:30:43.893Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "1",
+        "object_repr": "LPG ьрёёрц",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-07-13T14:30:53.830Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "5",
+        "object_repr": "╙╟-ъртшЄрЎш ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-07-25T12:17:13.468Z",
+        "user": 1,
+        "content_type": 18,
+        "object_id": "1",
+        "object_repr": "╬Єч√т эр LPG ьрёёрц юЄ ├єырщ√ь ╩рсєыютр",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-08-08T15:16:18.954Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "┬рфшь",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\", \"Superuser status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-08-08T16:28:59.865Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "7",
+        "object_repr": "╨єўэющ рэЄшЎхыы■ышЄэ√щ ьрёёрц 40 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-08-08T16:29:32.068Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "8",
+        "object_repr": "╨єўэющ рэЄшЎхыы■ышЄэ√щ ьрёёрц 60 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-08-08T16:31:36.882Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "9",
+        "object_repr": "╬с∙шщ ьрёёрц тёхую Єхыр 60 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-08-08T16:31:52.758Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "10",
+        "object_repr": "╬с∙шщ ьрёёрц тёхую Єхыр 90 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-08-08T16:35:17.423Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "11",
+        "object_repr": "╘ЁрэЎєчёъшщ ьюфхышЁє■∙шщ ьрёёрц",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-08-08T16:40:28.813Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "12",
+        "object_repr": "╤ъєы№яЄєЁэ√щ ьрёёрц ышЎр",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-08-08T16:43:26.284Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "12",
+        "object_repr": "╤ъєы№яЄєЁэ√щ ьрёёрц ышЎр",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2025-08-08T16:45:34.432Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "13",
+        "object_repr": "╩ырёёшўхёъшщ ьрёёрц ышЎр 30 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2025-08-08T16:45:52.316Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "14",
+        "object_repr": "╩ырёёшўхёъшщ ьрёёрц ышЎр 60 ьшэ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2025-08-08T16:48:30.532Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "15",
+        "object_repr": "╘хЁєыют√щ ьрёёрц",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2025-08-08T16:50:02.035Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "16",
+        "object_repr": "╠шъЁюЄюъютр  ЄхЁряш ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2025-08-08T16:51:14.580Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "16",
+        "object_repr": "╠шъЁюЄюъютр  ЄхЁряш ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2025-08-08T16:53:58.893Z",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "17",
+        "object_repr": "╩юьяыхъё фы  ышЎр ё RF-ышЇЄшэуюь",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$siKHYlYsm3hB3V1eTcJmIU$hTPQESYdHiVYcjXLY/QIbHhKZchU+MsoEc54nzLHnqs=",
+        "last_login": "2025-08-08T17:10:03.624Z",
+        "is_superuser": true,
+        "username": "Admin765",
+        "first_name": "┬рфшь",
+        "last_name": "╩ючыют",
+        "email": "kozlov67b@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-07-10T14:53:35.362Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$pAzn5JIlXwxsK2wTqNnvpR$kC28wJUKJ5ZV5ASw1zp/xuIj00gpax6XzJH/nUa90uc=",
+        "last_login": "2025-07-10T14:57:06.599Z",
+        "is_superuser": false,
+        "username": "SteelFrame",
+        "first_name": "",
+        "last_name": "",
+        "email": "klient242435922@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-07-10T14:57:05.590Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$aF6Z9hhkz30oIhCpsb63AH$qp8jboj2HSJj/ymU0M4mkmQPz20W5ekA3qc+2uZI30g=",
+        "last_login": "2025-08-08T12:12:00Z",
+        "is_superuser": true,
+        "username": "┬рфшь",
+        "first_name": "┬рфшь",
+        "last_name": "╩ючыют",
+        "email": "kozlov68b@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-08-08T12:11:58Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$vQVMzvy8N4DA16rESrHm1X$duB03DuaEWuadJ0WCJqoW3R8IxA0t4wfN85v5DGtnno=",
+        "last_login": "2025-08-08T14:55:43.949Z",
+        "is_superuser": false,
+        "username": "SteelFrame1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-08T14:55:42.808Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "jqjp2lweehfzeyq26cdnom0q1oueqpoj",
+    "fields": {
+        "session_data": ".eJxVjstuwyAQRf-FdYV4GGO8zL7fgGaYcU0SQWWw1CrKv8eJsmh1d_dxdG8iwt7XuDfeYiYxCy0-_noI6cLlGdAZyleVqZa-ZZTPinynTX5W4uvp3f0HWKGtxxohgPeLcQTorcYl0Mh6CUGR8gkNAllka6wn0lrBcAiNMwOnyRk9HlBIqe6lv9hcek7QmSJ0MWvv7DC40QeptJumyR0XGreWa4n88523XzGr-wNyOE3y:1ufHJv:e3zc5TN-vLju28XNlNbWdl9ApW_U61ZmRD__FpQGALw",
+        "expire_date": "2025-08-08T12:14:39.017Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kegd8dwksg1d1gthzom02d0j6ihf02q3",
+    "fields": {
+        "session_data": ".eJxVjk1uwyAQhe_CukIw2BB72X3PgGaYcUxbQWSw1Cjq3etEWaR6u_fz6d1UxL2vcW-yxcxqVla9vXqE6UvKPeBPLOeqUy19y6TvFf1Mm_6oLN_vz-4_wIptPdaEE4awwMhIwVlaJvZil2kybEIiIGRH4sAFZmsNDocIRhgknUaw_oBiSnUv_cGW0nPCLhyxq9mGcfDBGeO0dwDg4bjQpLVcS5SfS96uaja_f29zTdc:1ukQbT:0osLppqYOEkTueL5F4R4BOHzzYh1_oW75pGnWUta9J0",
+        "expire_date": "2025-08-22T17:10:03.633Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qxq4k17c5y769wvqujz6mwpdc5noipp0",
+    "fields": {
+        "session_data": ".eJxVjkEOwiAURO_C2hCgLZQu3XsG8vl8LGrAFJpojHe3Ghe6nTfzMg_mYG2zWystLgU2Mcl2v5kHPFN-g3CCfCwcS25L8vxd4V9a-aEEuuy_3T_BDHXe1qLDHr2JVsXRQx8iCdmJTmwpWTCKFHmUA8qoaQwySBMVCe1N3w0EZtykgFjW3D5uyi0hNAoOGpukGVQvrB0st1pqoc12oVKtqWRHt2ta7mwSzxdrpk4B:1uavsl:L5XTSMDGCb0JTJm5dGMTkxaFvvQzZUh66w2ZUWK2v3k",
+        "expire_date": "2025-07-27T12:32:39.976Z"
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "email": "klient242435922@gmail.com",
+        "verified": false,
+        "primary": true
+    }
+},
+{
+    "model": "core.client",
+    "pk": 1,
+    "fields": {
+        "created": "2025-07-13T12:33:01.464Z",
+        "updated": "2025-08-08T17:10:30.228Z",
+        "user": 1,
+        "phone": "+7 (999) 123-45-67"
+    }
+},
+{
+    "model": "core.client",
+    "pk": 2,
+    "fields": {
+        "created": "2025-08-08T12:12:07.670Z",
+        "updated": "2025-08-08T12:12:51.605Z",
+        "user": 3,
+        "phone": "+7 (999) 123-45-67"
+    }
+},
+{
+    "model": "core.client",
+    "pk": 3,
+    "fields": {
+        "created": "2025-08-08T14:55:51.309Z",
+        "updated": "2025-08-08T14:55:51.309Z",
+        "user": 4,
+        "phone": ""
+    }
+},
+{
+    "model": "services.servicecategory",
+    "pk": 1,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "└яярЁрЄэ√щ ьрёёрц",
+        "description": "╧ЁюЎхфєЁ√ ё шёяюы№чютрэшхь ёяхЎшрышчшЁютрээ√ї ряярЁрЄют фы  ъюЁЁхъЎшш ЇшуєЁ√ ш єыєў°хэш  ёюёЄю эш  ъюцш",
+        "image": "",
+        "icon": "bi-magic"
+    }
+},
+{
+    "model": "services.servicecategory",
+    "pk": 2,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "╨єўэющ ьрёёрц",
+        "description": "▌ЇЇхъЄштэ√х ьрёёрцэ√х Єхїэшъш, т√яюыэ хь√х юя√Єэ√ьш ёяхЎшрышёЄрьш",
+        "image": "",
+        "icon": "bi-hand-index-thumb"
+    }
+},
+{
+    "model": "services.servicecategory",
+    "pk": 3,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "╠рёёрц ышЎр",
+        "description": "╤яхЎшрышчшЁютрээ√х Єхїэшъш ьрёёрцр фы  єыєў°хэш  ъюэЄєЁют ышЎр, юьюыюцхэш  ъюцш ш ёэ Єш  эряЁ цхэш ",
+        "image": "",
+        "icon": "bi-emoji-smile"
+    }
+},
+{
+    "model": "services.service",
+    "pk": 1,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:30:43.889Z",
+        "category": 1,
+        "name": "LPG ьрёёрц",
+        "description": "╤ютЁхьхээр  ъюёьхЄюыюушўхёър  яЁюЎхфєЁр, эряЁртыхээр  эр єыєў°хэшх ёюёЄю эш  ъюцш ш Єърэхщ ё шёяюы№чютрэшхь ряярЁрЄр, ъюЄюЁ√щ ёюўхЄрхЄ тръєєьэюх тючфхщёЄтшх ш ьхїрэшўхёъюх Ёюышъютюх ьрёёшЁютрэшх. ▌Єр Єхїэшър ръЄштэю шёяюы№чєхЄё  фы  ъюЁЁхъЎшш ЇшуєЁ√, сюЁ№с√ ё Ўхыы■ышЄюь, єёЄЁрэхэш  юЄ╕ъют, р Єръцх фы  юьюыюцхэш  ъюцш ышЎр.",
+        "price": "1300.00",
+        "duration": "01:00:00",
+        "image": "services/LPG.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 2,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:30:31.302Z",
+        "category": 1,
+        "name": "╠шюёЄшьєы Ўш ",
+        "description": "▌ыхъЄЁюф√, яюфъы■ў╕ээ√х ъ ряярЁрЄє ьшюёЄшьєы Ўшш, Ёрчьх∙р■Єё  эр ъюцх т юсырёЄш Ўхыхт√ї ь√°Ў. ╧юф тючфхщёЄтшхь ¤ыхъЄЁшўхёъюую Єюър ь√°Ў√ эрўшэр■Є ёюъЁр∙рЄ№ё  рэрыюушўэю Єюьє, ъръ ¤Єю яЁюшёїюфшЄ яЁш Їшчшўхёъющ эруЁєчъх.",
+        "price": "550.00",
+        "duration": "00:40:00",
+        "image": "services/╠шюёЄшьєы Ўш .jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 3,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:30:10.706Z",
+        "category": 1,
+        "name": "┬ръєєьэ√щ ьрёёрц",
+        "description": "┬ю тЁхь  яЁюЎхфєЁ√ эр яЁюсыхьэє■ юсырёЄ№ тючфхщёЄтє■Є ё яюью∙№■ ёяхЎшры№э√ї Ёюышъютю-тръєєьэ√ї эрёрфюъ. ┬ Ёхчєы№ЄрЄх т юсЁрсюЄрээющ чюэх ръЄштшчшЁєхЄё  ышьЇююЄЄюъ, єыєў°рхЄё  ъЁютюёэрсцхэшх.",
+        "price": "1200.00",
+        "duration": "00:45:00",
+        "image": "services/┬ръєєь.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 4,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:29:54.107Z",
+        "category": 1,
+        "name": "RF ышЇЄшэу",
+        "description": "╤єЄ№ ьхЄюфр чръы■ўрхЄё  т Єюўхўэюь тючфхщёЄтшш Ёрфшютюыэ эр эршсюыхх є чтшь√х чюэ√, уфх ўр∙х тёхую юсЁрчєхЄё  Ўхыы■ышЄ ш ьх°юўъш, Єю хёЄ№ ъюЄюЁ√ь ётющёЄтхээр тючЁрёЄэр  фЁ сыюёЄ№.",
+        "price": "1000.00",
+        "duration": "00:40:00",
+        "image": "services/RF-ышЇЄшэу.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 5,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:30:53.826Z",
+        "category": 1,
+        "name": "╙╟-ъртшЄрЎш ",
+        "description": "╙ы№ЄЁрчтєъютр  ъртшЄрЎш  фы  Єхыр Ч ¤Єю ряярЁрЄэ√щ ьхЄюф ¤ёЄхЄшўхёъющ ьхфшЎшэ√, єёЄЁрэ ■∙шщ ыюъры№э√х цшЁют√х юЄыюцхэш .",
+        "price": "1000.00",
+        "duration": "00:40:00",
+        "image": "services/╙╟-ъртшЄрЎш .jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 6,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-07-13T14:27:45.009Z",
+        "category": 1,
+        "name": "╠рёёрц ёЇхЁрьш",
+        "description": "╨хчєы№ЄрЄ√ ёЄрэют Єё  чрьхЄэ√ єцх яюёых эхёъюы№ъшї ёхрэёют: ъюцр яюфЄ уштрхЄё , ъюэЄєЁ√ Єхыр ёЄрэют Єё  сюыхх ўхЄъшьш, р ¤ЇЇхъЄ ышЇЄшэур ёюїЁрэ хЄё  эр фышЄхы№эюх тЁхь .",
+        "price": "2100.00",
+        "duration": "01:00:00",
+        "image": "services/╤ЇхЁ√.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 7,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:28:59.859Z",
+        "category": 2,
+        "name": "╨єўэющ рэЄшЎхыы■ышЄэ√щ ьрёёрц 40 ьшэ",
+        "description": "╥ЁрфшЎшюээ√щ Ёєўэющ ьрёёрц яЁюЄшт Ўхыы■ышЄр - ¤Єю ¤ЇЇхъЄштэ√ ьхЄюф сюЁ№с√ ё \"└яхы№ёшэютющ ъюЁъющ\" ш єыєў°хэшх єяЁєуюёЄш ъюцш.",
+        "price": "1500.00",
+        "duration": "00:40:00",
+        "image": "services/anticelljulitnyj-massaz_mMKHB5y.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 8,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:29:32.061Z",
+        "category": 2,
+        "name": "╨єўэющ рэЄшЎхыы■ышЄэ√щ ьрёёрц 60 ьшэ",
+        "description": "╥ЁрфшЎшюээ√щ Ёєўэющ ьрёёрц яЁюЄшт Ўхыы■ышЄр - ¤Єю ¤ЇЇхъЄштэ√ ьхЄюф сюЁ№с√ ё \"└яхы№ёшэютющ ъюЁъющ\" ш єыєў°хэшх єяЁєуюёЄш ъюцш.",
+        "price": "1800.00",
+        "duration": "01:00:00",
+        "image": "services/anticelljulitnyj-massaz_QdeJ2CB.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 9,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:31:36.878Z",
+        "category": 2,
+        "name": "╬с∙шщ ьрёёрц тёхую Єхыр 60 ьшэ",
+        "description": "╩юьяыхъёэр  яЁюЎхфєЁр, юїтрЄ√тр■∙р  тёх Єхыю юЄ ёЄюя фю °хш, ёяюёюсёЄтєхЄ Ёрёёырсыхэш■ ь√°Ў, єыєў°рхЄ ъЁютююсЁр∙хэшх ш юс∙хх ёрьюўєтёЄтшх. ╤эшьрхЄ ь√°хўэюх эряЁ цхэшх ш ёЄЁхёё, фрЁшЄ ю∙є∙хэшх ыхуъюёЄш ш юсэютыхэш .",
+        "price": "2200.00",
+        "duration": "01:00:00",
+        "image": "services/XXL1_copy_1_dP0soMF.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 10,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:31:52.753Z",
+        "category": 2,
+        "name": "╬с∙шщ ьрёёрц тёхую Єхыр 90 ьшэ",
+        "description": "╩юьяыхъёэр  яЁюЎхфєЁр, юїтрЄ√тр■∙р  тёх Єхыю юЄ ёЄюя фю °хш, ёяюёюсёЄтєхЄ Ёрёёырсыхэш■ ь√°Ў, єыєў°рхЄ ъЁютююсЁр∙хэшх ш юс∙хх ёрьюўєтёЄтшх. ╤эшьрхЄ ь√°хўэюх эряЁ цхэшх ш ёЄЁхёё, фрЁшЄ ю∙є∙хэшх ыхуъюёЄш ш юсэютыхэш .",
+        "price": "2700.00",
+        "duration": "01:30:00",
+        "image": "services/XXL1_copy_1_9BDOoU0.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 11,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:35:17.419Z",
+        "category": 3,
+        "name": "╘ЁрэЎєчёъшщ ьюфхышЁє■∙шщ ьрёёрц",
+        "description": "╚эЄхэёштэр  Єхїэшър ьрёёрцр, эряЁртыхээр  эр єыєў°хэшх ъюэЄєЁют ышЎр ш сюЁ№сє ё тючЁрёЄэ√ьш шчьхэхэш ьш. ╤ЄшьєышЁєхЄ ъЁютююсЁр∙хэшх, єъЁхяы хЄ ь√°Ў√ ш ёючфрхЄ ¤ЇЇхъЄ хёЄхёЄтхээюую ышЇЄшэур.",
+        "price": "2100.00",
+        "duration": "00:40:00",
+        "image": "services/france_I4EI4hg.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 12,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:43:26.276Z",
+        "category": 3,
+        "name": "╤ъєы№яЄєЁэ√щ ьрёёрц ышЎр",
+        "description": "├ыєсюър  Єхїэшър ЁрсюЄ√ ё ь√°Ўрьш ш Єърэ ьш ышЎр, эряЁртыхээр  эр ъюЁЁхъЎш■ ютрыр, єёЄЁрэхэшх юЄхўэюёЄш ш тюёёЄрэютыхэшх ўхЄъшї ъюэЄєЁют. ╧юьюурхЄ єёЄЁрэшЄ№ яЁшчэръш єёЄрыюёЄш ш ёЄЁхёёр.",
+        "price": "2500.00",
+        "duration": "01:15:00",
+        "image": "services/fdb44f1c98af210deffc7d027e2831f8_fJYP649.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 13,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:45:34.428Z",
+        "category": 3,
+        "name": "╩ырёёшўхёъшщ ьрёёрц ышЎр 30 ьшэ",
+        "description": "┴рчютр  Єхїэшър ьрёёрцр ышЎр, тъы■ўр■∙р  яюуырцштрэш , ЁрёЄшЁрэш  ш ыхуъшх эрфртыштрэш . ╤яюёюсёЄтєхЄ єыєў°хэш■ ъЁютююсЁр∙хэш , ёэ Єш■ эряЁ цхэш  ьшьшўхёъшї ь√°Ў ш т√Ёртэштрэш■ Єюэр ъюцш.",
+        "price": "1300.00",
+        "duration": "00:30:00",
+        "image": "services/skulpturno-glubokiy-1_FTYFuZC.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 14,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:45:52.312Z",
+        "category": 3,
+        "name": "╩ырёёшўхёъшщ ьрёёрц ышЎр 60 ьшэ",
+        "description": "┴рчютр  Єхїэшър ьрёёрцр ышЎр, тъы■ўр■∙р  яюуырцштрэш , ЁрёЄшЁрэш  ш ыхуъшх эрфртыштрэш . ╤яюёюсёЄтєхЄ єыєў°хэш■ ъЁютююсЁр∙хэш , ёэ Єш■ эряЁ цхэш  ьшьшўхёъшї ь√°Ў ш т√Ёртэштрэш■ Єюэр ъюцш.",
+        "price": "2100.00",
+        "duration": "01:00:00",
+        "image": "services/skulpturno-glubokiy-1_QE0ajjb.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 15,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:48:30.529Z",
+        "category": 3,
+        "name": "╘хЁєыют√щ ьрёёрц",
+        "description": "╤яхЎшры№эр  Єхїэшър ьрёёрцр ё шёяюы№чютрэшхь ЇхЁєыютющ ъшёыюЄ√, ъюЄюЁр  юсырфрхЄ ью∙э√ьш рэЄшюъёшфрэЄэ√ьш ётющёЄтрьш. ╟рьхфы хЄ яЁюЎхёё√ ёЄрЁхэш , т√ЁртэштрхЄ Єюэ ъюцш ш єьхэ№°рхЄ тшфшьюёЄ№ ьюЁ∙шэ.",
+        "price": "2500.00",
+        "duration": "00:45:00",
+        "image": "services/ferul_lz7s7oy.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 16,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:51:14.575Z",
+        "category": 3,
+        "name": "╠шъЁюЄюъютр  ЄхЁряш ",
+        "description": "╚ьяєы№ё√ ьшэшьры№эюую эряЁ цхэш  яюьюур■Є яютхЁэєЄ№ тЁхь  тёя Є№, шчсртшЄ№ё  юЄ Єхьэ√ї ъЁєуют, тюёёЄрэютшЄ№ ¤ырёЄшўэюёЄ№ Єърэхщ, ёфхырЄ№ сюыхх ўхЄъшьш ъюэЄєЁ√ ышЎр. ╠шъЁюЄюъш фхщёЄтє■Є ь уъю, ёЄшьєышЁє■Є ЁхухэхЁрЄштэ√х яЁюЎхёё√, т√тюф Є ыш°э■■ цшфъюёЄ№.",
+        "price": "2300.00",
+        "duration": "00:45:00",
+        "image": "services/20221117-mikrotoki_ssBiMSu.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.service",
+    "pk": 17,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2025-08-08T16:53:58.886Z",
+        "category": 3,
+        "name": "╩юьяыхъё фы  ышЎр ё RF-ышЇЄшэуюь",
+        "description": "╩юьсшэшЁютрээр  яЁюЎхфєЁр, ёюўхЄр■∙р  ьрёёрц ышЎр ш RF-ышЇЄшэу. ╬схёяхўштрхЄ уыєсюъюх тючфхщёЄтшх эр фхЁьє, ёЄшьєышЁєхЄ т√ЁрсюЄъє ъюыырухэр ш ¤ырёЄшэр, ьюфхышЁєхЄ ютры ышЎр ш єьхэ№°рхЄ уыєсшэє ьюЁ∙шэ.",
+        "price": "2050.00",
+        "duration": "01:00:00",
+        "image": "services/RF_lifting_Scarlet_S_P3frksd.jpg",
+        "is_active": true
+    }
+},
+{
+    "model": "services.servicereview",
+    "pk": 1,
+    "fields": {
+        "created": "2025-07-25T12:16:29.669Z",
+        "updated": "2025-07-25T12:17:13.465Z",
+        "user": 1,
+        "service": 1,
+        "location": 2,
+        "rating": 5,
+        "comment": "╨хры№эю ЁрсюЄрхЄ! ┬ёхь ёютхЄє■!",
+        "is_published": true
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 1,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "▐└ээр эр ╘рсЁшўэющ",
+        "address": "у. ╧хэчр, єы. ╘рсЁшўэр , ф. 3",
+        "phone": "+7 (900) 123-45-67",
+        "email": "fabr@yuanna.ru",
+        "working_hours": "╧э-╧Є: 9:00-21:00, ╤с-┬ё: 10:00-19:00",
+        "description": "├ыртэ√щ Їшышры ёЄєфшш ьрёёрцр ▐└ээр Ёрёяюыюцхэ т ЎхэЄЁры№эющ ўрёЄш уюЁюфр. ╟фхё№ яЁхфёЄртыхэ яюыэ√щ ёяхъЄЁ єёыєу эр°хщ ёЄєфшш.",
+        "image": "",
+        "is_active": true,
+        "latitude": "53.1925",
+        "longitude": "45.0142"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 2,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "▐└ээр эр ╬ышьяшщёъющ",
+        "address": "у. ╧хэчр, єы. ╬ышьяшщёър , ф. 10",
+        "phone": "+7 (900) 123-45-68",
+        "email": "olymp@yuanna.ru",
+        "working_hours": "╧э-╧Є: 10:00-22:00, ╤с-┬ё: 10:00-20:00",
+        "description": "╙■Єэ√щ Їшышры т ёхтхЁэющ ўрёЄш уюЁюфр ё ёютЁхьхээ√ь юсюЁєфютрэшхь ш яЁюЇхёёшюэры№э√ь яхЁёюэрыюь.",
+        "image": "",
+        "is_active": true,
+        "latitude": "53.2138",
+        "longitude": "44.9988"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 3,
+    "fields": {
+        "created": "2023-01-01T00:00:00Z",
+        "updated": "2023-01-01T00:00:00Z",
+        "name": "▐└ээр эр ╤ЄЁюшЄхыхщ",
+        "address": "у. ╧хэчр, яЁ-Є ╤ЄЁюшЄхыхщ, ф. 39┬",
+        "phone": "+7 (900) 123-45-69",
+        "email": "stroit@yuanna.ru",
+        "working_hours": "╧э-┬ё: 9:00-21:00",
+        "description": "╧ЁюёЄюЁэ√щ ш ёютЁхьхээ√щ Їшышры ё Ёрё°шЁхээ√ь ёяхъЄЁюь єёыєу ш єфюсэющ ярЁъютъющ.",
+        "image": "",
+        "is_active": true,
+        "latitude": "53.2046",
+        "longitude": "45.0149"
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 1,
+    "fields": {
+        "created": "2025-07-13T12:35:13.361Z",
+        "updated": "2025-07-13T12:36:52.057Z",
+        "client": 1,
+        "service": 2,
+        "location": 3,
+        "date": "2025-07-25",
+        "time": "18:40:00",
+        "status": "confirmed",
+        "notes": "╠юує юяючфрЄ№",
+        "admin_notes": "",
+        "notified": false
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 2,
+    "fields": {
+        "created": "2025-07-13T14:34:52.785Z",
+        "updated": "2025-08-08T12:08:01.755Z",
+        "client": 1,
+        "service": 4,
+        "location": 1,
+        "date": "2025-07-26",
+        "time": "18:35:00",
+        "status": "canceled",
+        "notes": "",
+        "admin_notes": "═х фючтюэшышё№",
+        "notified": false
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 3,
+    "fields": {
+        "created": "2025-07-26T13:33:21.365Z",
+        "updated": "2025-07-26T13:34:43.151Z",
+        "client": 1,
+        "service": 3,
+        "location": 2,
+        "date": "2025-07-31",
+        "time": "18:00:00",
+        "status": "confirmed",
+        "notes": "╠юує эх ьэюую юяючфрЄ№",
+        "admin_notes": "═х ьэюую ёЄЁрээр  ЄхЄ ",
+        "notified": true
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 4,
+    "fields": {
+        "created": "2025-08-07T13:18:17.559Z",
+        "updated": "2025-08-07T13:19:05.035Z",
+        "client": 1,
+        "service": 2,
+        "location": 2,
+        "date": "2025-08-08",
+        "time": "07:00:00",
+        "status": "confirmed",
+        "notes": "",
+        "admin_notes": "",
+        "notified": true
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 5,
+    "fields": {
+        "created": "2025-08-07T16:05:10.006Z",
+        "updated": "2025-08-07T16:05:10.006Z",
+        "client": 1,
+        "service": 12,
+        "location": 3,
+        "date": "2025-08-07",
+        "time": "20:00:00",
+        "status": "pending",
+        "notes": "",
+        "admin_notes": "",
+        "notified": false
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 6,
+    "fields": {
+        "created": "2025-08-07T16:29:01.530Z",
+        "updated": "2025-08-08T14:36:24.334Z",
+        "client": 1,
+        "service": 3,
+        "location": 2,
+        "date": "2025-08-23",
+        "time": "21:30:00",
+        "status": "completed",
+        "notes": "",
+        "admin_notes": "",
+        "notified": false
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 7,
+    "fields": {
+        "created": "2025-08-08T12:13:23.442Z",
+        "updated": "2025-08-08T12:13:23.442Z",
+        "client": 3,
+        "service": 11,
+        "location": 1,
+        "date": "2025-08-08",
+        "time": "02:13:00",
+        "status": "pending",
+        "notes": "",
+        "admin_notes": "",
+        "notified": false
+    }
+},
+{
+    "model": "appointments.appointment",
+    "pk": 8,
+    "fields": {
+        "created": "2025-08-08T14:56:57.252Z",
+        "updated": "2025-08-08T14:56:57.252Z",
+        "client": 4,
+        "service": 8,
+        "location": 2,
+        "date": "2025-08-01",
+        "time": "04:56:00",
+        "status": "pending",
+        "notes": "",
+        "admin_notes": "",
+        "notified": false
+    }
+}
+]
