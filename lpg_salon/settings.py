@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
+
     
 
     # Сторонние приложения
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
     'appointments',
     'api',
     'calendar_integration',
+    'results',
 ]
 
 STATICFILES_FINDERS = [

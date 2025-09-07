@@ -82,49 +82,65 @@
     
     <div class="row mt-5">
         <div class="col-12 mb-4">
-            <h2 class="h2 brand-font text-center">Наша команда</h2>
+            <h2 class="h2 brand-font text-center">Результаты наших процедур</h2>
+            <p class="text-center text-muted">Реальные результаты наших клиентов, достигнутые с помощью наших процедур</p>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card border-0 shadow-sm text-center h-100">
-                <div class="card-body">
-                    <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center bg-light" style="width: 150px; height: 150px;">
-                        <i class="bi bi-person text-primary" style="font-size: 4rem;"></i>
+        
+        <div class="col-12">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <a href="{% url 'results_list' %}" class="btn btn-primary">
+                            <i class="bi bi-images me-2"></i>Смотреть все результаты
+                        </a>
                     </div>
-                    <h3 class="h5">Екатерина</h3>
-                    <p class="text-muted">Руководитель студии</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card border-0 shadow-sm text-center h-100">
-                <div class="card-body">
-                    <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center bg-light" style="width: 150px; height: 150px;">
-                        <i class="bi bi-person text-primary" style="font-size: 4rem;"></i>
+                    
+                    <!-- Аккордеон с некоторыми результатами -->
+                    <div class="accordion" id="resultsAccordion">
+                        {% for result in featured_results|slice:":3" %}
+                        <div class="accordion-item border-0 mb-3">
+                            <h2 class="accordion-header" id="heading{{ result.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ result.id }}" aria-expanded="false" aria-controls="collapse{{ result.id }}">
+                                    <strong>{{ result.title }}</strong> - {{ result.service.name }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ result.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ result.id }}" data-bs-parent="#resultsAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <div class="card">
+                                                <div class="card-header bg-light text-center">До</div>
+                                                <div class="card-body p-0">
+                                                    <img src="{{ result.before_image.url }}" alt="Фото до" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-header bg-primary text-white text-center">После</div>
+                                                <div class="card-body p-0">
+                                                    <img src="{{ result.after_image.url }}" alt="Фото после" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <p class="mb-1"><strong>Процедура:</strong> {{ result.service.name }}</p>
+                                        <p class="mb-1"><strong>Количество сеансов:</strong> {{ result.sessions_count }}</p>
+                                        <p class="mb-1"><strong>Период:</strong> {{ result.period }}</p>
+                                        {% if result.description %}
+                                        <p class="mt-2">{{ result.description }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="text-center py-4">
+                            <p>В настоящее время нет опубликованных результатов. Заходите позже!</p>
+                        </div>
+                        {% endfor %}
                     </div>
-                    <h3 class="h5">Анна</h3>
-                    <p class="text-muted">Массажист высшей категории</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card border-0 shadow-sm text-center h-100">
-                <div class="card-body">
-                    <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center bg-light" style="width: 150px; height: 150px;">
-                        <i class="bi bi-person text-primary" style="font-size: 4rem;"></i>
-                    </div>
-                    <h3 class="h5">Мария</h3>
-                    <p class="text-muted">Специалист по массажу лица</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card border-0 shadow-sm text-center h-100">
-                <div class="card-body">
-                    <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center bg-light" style="width: 150px; height: 150px;">
-                        <i class="bi bi-person text-primary" style="font-size: 4rem;"></i>
-                    </div>
-                    <h3 class="h5">Олег</h3>
-                    <p class="text-muted">Специалист по антицеллюлитному массажу</p>
                 </div>
             </div>
         </div>
