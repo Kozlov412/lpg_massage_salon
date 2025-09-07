@@ -27,6 +27,12 @@ class AboutView(TemplateView):
 class ContactView(TemplateView):
     """Страница контактов"""
     template_name = 'core/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Добавляем избранные результаты (например, последние 3)
+        context['featured_results'] = BeforeAfterResult.objects.filter(is_published=True).order_by('-created_at')[:3]
+        return context
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

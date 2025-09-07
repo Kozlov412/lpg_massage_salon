@@ -29,6 +29,7 @@ urlpatterns = [
     path('appointments/', include('appointments.urls')),
     path('api/v1/', include('api.urls')),
     path('calendar/', include('calendar_integration.urls')),
+    path('results/', include('results.urls')),
 ]
 
 if settings.DEBUG:
